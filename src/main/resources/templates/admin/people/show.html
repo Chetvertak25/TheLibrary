@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="buttons-wrapper">
+    <button onclick="window.location.href='/admin/people';">Все люди</button>
+</div>
+<p th:text="${person.getName() + ', ' + person.getYearOfBirth() + ', ' + person.getRole()}"></p>
+
+<div th:if="${books.isEmpty}">
+    <p>Человек не взял ни одной книги</p>
+    <hr/>
+</div>
+
+<div th:if="${!books.isEmpty()}">
+    <hr/>
+    <b>Книги:</b>
+    <br/>
+    <table>
+        <tr th:each="book : ${books}">
+            <td><a th:href="@{/admin/books/{id}(id=${book.getId})}" th:text="${book.getTitle}"
+                   th:style="${book.isOverdue ? 'color: red' : 'color: black'}"></a></td>
+            <td th:text="${book.getAuthor}" th:style="${book.isOverdue ? 'color: red' : 'color: black'}"></td>
+            <td th:text="${book.getYear}" th:style="${book.isOverdue ? 'color: red' : 'color: black'}"></td>
+        </tr>
+    </table>
+    <hr/>
+</div>
+
+<div class="action-buttons">
+    <a th:href="@{/admin/people/{id}/edit(id=${person.getId()})}">Редактировать</a>
+    <br>
+
+    <form th:method="POST" th:action="@{/admin/people/{id}(id=${person.getId})}" th:object="${person}">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <button type="submit">Удалить</button>
+    </form>
+</div>
+</body>
+</html>

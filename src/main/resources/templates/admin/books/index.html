@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все книги</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .book {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .buttons-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .buttons-wrapper button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Books Library</h1>
+
+    <div class="buttons-wrapper">
+        <button onclick="window.location.href='/admin/books/search';">Поиск по названию</button>
+        <button onclick="window.location.href='/admin/books/new';">Добавить книгу</button>
+        <button onclick="window.location.href='/admin/books/my';">Мои книги</button>
+        <button onclick="window.location.href='/admin/people';">Все люди</button>
+    </div>
+
+    <div th:each="book : ${books}" class="book">
+        <h3><a th:href="@{/admin/books/{id}(id=${book.getId()})}" th:text="${book.getTitle()}"></a></h3>
+        <p><strong>Автор:</strong> <span th:text="${book.getAuthor()}"></span></p>
+        <p><strong>Год:</strong> <span th:text="${book.getYear()}"></span></p>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

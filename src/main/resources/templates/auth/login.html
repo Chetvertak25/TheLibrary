@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            float: left;
+            width: 50%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .buttons-wrapper {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #005f6b;
+        }
+    </style>
+</head>
+<body>
+
+<form name="f" method="post" action="/process_login">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+    <label for="username">Введите имя пользователя</label>
+    <input type="text" name="username" id="username"/>
+    <br/>
+    <label for="password">Введите пароль: </label>
+    <input type="password" name="password" id="password"/>
+    <br/>
+    <input type="submit" value="Войти" />
+
+    <div th:if="${param.error}" style="color: red">
+        Неправильное имя или пароль!
+    </div>
+</form>
+
+<div class="buttons-wrapper">
+    <button onclick="window.location.href='/auth/registration';">Регистрация</button>
+</div>
+
+</body>
+</html>
+
+
+

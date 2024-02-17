@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск похожих людей</title>
+</head>
+<body>
+<h1>Поиск похожих людей</h1>
+<form th:action="@{/admin/people/search}" method="post">
+    <input type="text" name="name" placeholder="Введите имя человека" required>
+    <button type="submit">Найти</button>
+</form>
+</body>
+</html>

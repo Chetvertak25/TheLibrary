@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .book {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .buttons-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .buttons-wrapper button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Информация о пользователе</h1>
+
+<div class="buttons-wrapper">
+    <button onclick="window.location.href='/auth/logout';">Выйти из системы</button>
+    <button onclick="window.location.href='/admin/books';">Все книги</button>
+
+    <form th:action="@{/admin/books/clear/{id}(id=${person.getId()})}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Вернуть все книги</button>
+    </form>
+</div>
+
+<div th:if="${person.getBooks().isEmpty()}">
+    <p>У вас нет книг</p>
+</div>
+
+<div th:if="${not person.getBooks().isEmpty()}">
+    <p>Ваши книги:</p>
+
+    <div th:each="book : ${person.getBooks()}" class="book">
+        <h3><a th:href="@{/user/books/{id}(id=${book.getId()})}" th:text="${book.getTitle()}"></a></h3>
+        <p><strong>Author:</strong> <span th:text="${book.getAuthor()}"></span></p>
+        <p><strong>Year:</strong> <span th:text="${book.getYear()}"></span></p>
+    </div>
+</div>
+</body>
+</html>

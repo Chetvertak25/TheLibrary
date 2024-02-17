@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты поиска</title>
+</head>
+<body>
+<h1>Результаты поиска</h1>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Логин</th>
+    </tr>
+    <tr th:each="person : ${people}">
+        <td><a th:href="@{/admin/people/{id}(id=${person.getId})}" th:text="${person.getName()}"></a></td>
+        <td th:text="${person.getUsername()}"></td>
+    </tr>
+</table>
+</body>
+</html>

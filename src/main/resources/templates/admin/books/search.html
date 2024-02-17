@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск похожих книг</title>
+</head>
+<body>
+<h1>Поиск похожих книг</h1>
+<form th:action="@{/admin/books/search}" method="post">
+    <input type="text" name="title" placeholder="Введите название книги" required>
+    <button type="submit">Найти</button>
+</form>
+</body>
+</html>

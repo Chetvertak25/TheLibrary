@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .book-info {
+            margin-bottom: 20px;
+        }
+
+        .book-info span {
+            font-weight: bold;
+        }
+
+        .book-info form {
+            display: inline-block;
+        }
+
+        .book-info input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .assign-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .assign-form select {
+            width: 200px;
+            padding: 5px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+        }
+
+        .action-buttons a {
+            display: inline-block;
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .action-buttons button[type="submit"] {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Меню книги</h1>
+
+<div class="buttons-wrapper">
+    <button onclick="window.location.href='/admin/books';">Все книги</button>
+</div>
+<div class="book-info">
+    <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}"></p>
+</div>
+
+<div th:if="${owner}">
+    <div class="book-info">
+        <span>Книга сейчас у:</span>
+        <a th:href="@{'/admin/people/' + ${book.getOwner().getId()}}"><span th:text="${book.getOwner().getName()}"></span></a>
+    </div>
+
+    <form th:method="PATCH" th:action="@{{id}/release(id=${book.getId()})}">
+        <input type="submit" value="Освободить книгу">
+    </form>
+</div>
+
+<div th:if="${people}">
+    <div class="book-info">
+        <span>Эта книга свободна. Кому ее назначить?</span>
+    </div>
+
+    <form class="assign-form" th:method="PATCH" th:action="@{/admin/books/{id}/assign(id=${book.getId()})}">
+        <label for="person">Выберите человека</label>
+        <select th:object="${person}" th:field="*{id}" id="person">
+            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getName()}"></option>
+        </select>
+        <input type="submit" value="Назначить книгу"/>
+    </form>
+</div>
+
+<div class="action-buttons">
+    <a th:href="@{/admin/books/{id}/edit(id=${book.getId()})}">Редактировать</a>
+
+    <form th:method="POST" th:action="@{/admin/books/{id}(id=${book.getId})}" th:object="${book}">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <button type="submit">Удалить</button>
+    </form>
+</div>
+</body>
+</html>

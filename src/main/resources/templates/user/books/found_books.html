@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Похожие книги</title>
+</head>
+<body>
+<h1>Похожие книги</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Название</th>
+    <th>Автор</th>
+    <th>Год издания</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="book : ${books}">
+    <td th:text="${book.getTitle()}"></td>
+    <td th:text="${book.getAthor()}"></td>
+    <td th:text="${book.getYear()}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
