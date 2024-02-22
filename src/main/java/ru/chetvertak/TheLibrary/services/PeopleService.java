@@ -1,16 +1,17 @@
 package ru.chetvertak.TheLibrary.services;
 
 import org.hibernate.Hibernate;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.chetvertak.TheLibrary.dto.PersonDTO;
 import ru.chetvertak.TheLibrary.models.Book;
 import ru.chetvertak.TheLibrary.models.Person;
 import ru.chetvertak.TheLibrary.repositories.BooksRepositories;
 import ru.chetvertak.TheLibrary.repositories.PeopleRepositories;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +21,14 @@ public class PeopleService {
     private final PeopleRepositories peopleRepositories;
     private final BooksRepositories booksRepositories;
     private final PasswordEncoder passwordEncoder;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public PeopleService(PeopleRepositories peopleRepositories, BooksRepositories booksRepositories, PasswordEncoder passwordEncoder) {
+    public PeopleService(PeopleRepositories peopleRepositories, BooksRepositories booksRepositories, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.peopleRepositories = peopleRepositories;
         this.booksRepositories = booksRepositories;
         this.passwordEncoder = passwordEncoder;
+        this.modelMapper = modelMapper;
     }
 
     public List<Person> findAll(){
@@ -58,27 +61,46 @@ public class PeopleService {
 
 
     @Transactional
-    public void save(Person person){
-        peopleRepositories.save(person);
+    public boolean save(Person person){
+        try {
+            peopleRepositories.save(person);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Transactional
-    public void update(int id, Person updatePerson){
-        updatePerson.setId(id);
-        updatePerson.setPassword(passwordEncoder.encode(updatePerson.getPassword()));
-        peopleRepositories.save(updatePerson);
+    public boolean update(int id, Person updatePerson){
+        try {
+            updatePerson.setId(id);
+            updatePerson.setPassword(passwordEncoder.encode(updatePerson.getPassword()));
+            peopleRepositories.save(updatePerson);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
     @Transactional
-    public void delete(int id){
-        List<Book> books =booksRepositories.findByOwnerId(id);
-        if (!books.isEmpty()){
-            books.forEach(book -> {
-                book.setTakeTime(null);
-                book.setOwner(null);
-                booksRepositories.save(book);
-            });
+    public boolean delete(int id){
+        try {
+            List<Book> books = booksRepositories.findByOwnerId(id);
+            if (!books.isEmpty()){
+                books.forEach(book -> {
+                    book.setTakeTime(null);
+                    book.setOwner(null);
+                    booksRepositories.save(book);
+                });
+            }
+            peopleRepositories.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        peopleRepositories.deleteById(id);
+    }
+
+    private PersonDTO convertToPersonDTO(Person person){
+        return modelMapper.map(person, PersonDTO.class);
     }
 
 

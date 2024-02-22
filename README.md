@@ -4,29 +4,30 @@ MVC Веб-приложение библиотеки
 ## Технологии
 - [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 - [Spring Boot](https://spring.io/projects/spring-boot/)
-- [Spring Boot Starter Data JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-- [Spring Boot Starter Security](https://spring.io/guides/gs/securing-web/)
-- [Spring Boot Starter Thymeleaf](https://spring.io/guides/gs/serving-web-content/)
-- [Spring Boot Starter Web](https://spring.io/guides/gs/serving-web-content/)
+- [Spring Data JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+- [Spring Security](https://spring.io/guides/gs/securing-web/)
+- [Spring Thymeleaf](https://spring.io/guides/gs/serving-web-content/)
+- [Spring Web](https://spring.io/guides/gs/serving-web-content/)
 - [Thymeleaf Extras Spring Security 5](https://github.com/thymeleaf/thymeleaf-extras-springsecurity)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Spring Boot Starter Test](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-testing)
 - [Spring Security Test](https://docs.spring.io/spring-security/site/docs/current/reference/html5/)
 - [Hibernate Validator](https://hibernate.org/validator/)
+- [Liquibase](https://www.liquibase.org/)
 
 
 ## Запуск
 Для запуска проекта необходимо выполнить следующие действия:
 
-1. В файле `application.properties` укажите параметры подключения к базе данных.
-2. Запустите скрипты `.sql` из папки `resources` для создания и заполнения таблиц базы данных.
-3. Запустите проект.
+1. В файле `application.yml` укажите параметры подключения к базе данных (url, username, password, Hibernate dialect)
+2. Запустите проект.
 
 ## Инструкция
 Это веб-приложение библиотеки с пользователями и книгами. 
 Реализована аутентификация и авторизация с ролями `admin` и `user`. 
 Для каждой роли предусмотрены различные права доступа и возможности.
 При создании книги и человека поля проходят валидацию.
+
 Пароли в базе данных хранятся в зашифрованном виде.
 
 Для входа под администратором используйте данные:

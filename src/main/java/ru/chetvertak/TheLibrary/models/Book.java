@@ -47,6 +47,16 @@ public class Book {
         this.year = year;
     }
 
+    public Book(int id, String title, String author, int year, LocalDateTime takeTime, Person owner, boolean overdue) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.takeTime = takeTime;
+        this.owner = owner;
+        this.overdue = overdue;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -114,12 +124,6 @@ public class Book {
                 '}';
     }
 
-    public static final Comparator<Book> COMPARE_BY_COUNT = new Comparator<Book>() {
-        @Override
-        public int compare(Book first, Book second) {
-            return first.getYear() - second.getYear();
-        }
-    };
 
     @Override
     public boolean equals(Object o) {

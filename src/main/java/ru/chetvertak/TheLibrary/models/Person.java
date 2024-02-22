@@ -1,7 +1,5 @@
 package ru.chetvertak.TheLibrary.models;
 
-import ru.chetvertak.TheLibrary.util.Role;
-
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -10,9 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * @author Neil Alishev
- */
+
 @Entity
 @Table(name = "People")
 public class Person {
@@ -56,6 +52,16 @@ public class Person {
     public Person(String name, int yearOfBirth, String username, String password, Role role) {
         this.name = name;
         this.yearOfBirth = yearOfBirth;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Person(int id, String name, int yearOfBirth, List<Book> books, String username, String password, Role role) {
+        this.id = id;
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.books = books;
         this.username = username;
         this.password = password;
         this.role = role;

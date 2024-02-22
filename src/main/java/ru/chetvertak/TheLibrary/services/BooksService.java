@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chetvertak.TheLibrary.models.Book;
+import ru.chetvertak.TheLibrary.models.BookComparator;
 import ru.chetvertak.TheLibrary.models.Person;
 import ru.chetvertak.TheLibrary.repositories.BooksRepositories;
 import ru.chetvertak.TheLibrary.repositories.PeopleRepositories;
@@ -46,11 +47,12 @@ public class BooksService {
         return optional.orElse(null);
     }
 
+
     public List<Book> getAllBooks(int page, int booksPerPage, boolean sort) {
 
         List<Book> books = booksRepositories.findAll();
         if (sort) {
-            books.sort(Book.COMPARE_BY_COUNT);
+            books.sort(new BookComparator());
         }
         if (booksPerPage != 0) {
             int startIndex = page * booksPerPage;
@@ -72,48 +74,79 @@ public class BooksService {
     }
 
     @Transactional
-    public void save(Book person) {
-        booksRepositories.save(person);
+    public boolean save(Book person) {
+        try {
+            booksRepositories.save(person);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     @Transactional
-    public void update(int id, Book updateBook) {
-        updateBook.setId(id);
-        booksRepositories.save(updateBook);
+    public boolean update(int id, Book updateBook) {
+        try {
+            updateBook.setId(id);
+            booksRepositories.save(updateBook);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Transactional
-    public void assignOwnerToBook(int id, Person person) {
-        Optional<Book> book = booksRepositories.findById(id);
-        book.get().setOwner(person);
-        book.get().setTakeTime(LocalDateTime.now());
-        booksRepositories.save(book.get());
+    public boolean assignOwnerToBook(int id, Person person) {
+        try {
+            Optional<Book> book = booksRepositories.findById(id);
+            book.get().setOwner(person);
+            book.get().setTakeTime(LocalDateTime.now());
+            booksRepositories.save(book.get());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Transactional
-    public void releaseOwnerToBook(int bookId) {
-        Book book = booksRepositories.findById(bookId).orElse(null);
-        book.setOwner(null);
-        book.setTakeTime(null);
-        booksRepositories.save(book);
-    }
-
-
-    @Transactional
-    public void releaseAllOwnerToBook(int ownerId) {
-        List<Book> books = booksRepositories.findByOwnerId(ownerId);
-        for (Book book: books) {
+    public boolean releaseOwnerToBook(int bookId) {
+        try {
+            Book book = booksRepositories.findById(bookId).orElse(null);
             book.setOwner(null);
             book.setTakeTime(null);
             booksRepositories.save(book);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Transactional
+    public boolean releaseAllOwnerToBook(int ownerId) {
+        try {
+            List<Book> books = booksRepositories.findByOwnerId(ownerId);
+            for (Book book: books) {
+                book.setOwner(null);
+                book.setTakeTime(null);
+                booksRepositories.save(book);
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    @Transactional
+    public boolean delete(int id) {
+        try {
+            booksRepositories.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
 
 
-
-    @Transactional
-    public void delete(int id) {
-        booksRepositories.deleteById(id);
-    }
 }

@@ -45,7 +45,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_USER", "/user/books");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin/books");
+
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
         for (final GrantedAuthority grantedAuthority : authorities) {
             String authorityName = grantedAuthority.getAuthority();
             if(roleTargetUrlMap.containsKey(authorityName)) {
@@ -57,6 +59,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+
         if (session == null) {
             return;
         }

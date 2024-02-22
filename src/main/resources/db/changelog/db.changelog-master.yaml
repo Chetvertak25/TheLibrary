@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/create-people-table.yaml
+  - include:
+      file: db/changelog/changeset/insert-person-into-people.yaml
+  - include:
+      file: db/changelog/changeset/insert-data-into-table.yaml

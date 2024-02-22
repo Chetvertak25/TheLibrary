@@ -1,4 +1,4 @@
-package ru.chetvertak.TheLibrary.util;
+package ru.chetvertak.TheLibrary.models;
 
 public enum Role {
     ROLE_ADMIN,

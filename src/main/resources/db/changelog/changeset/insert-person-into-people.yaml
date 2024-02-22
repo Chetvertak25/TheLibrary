@@ -1,0 +1,92 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Danil
+      changes:
+        - insert:
+            tableName: people
+            columns:
+              - column:
+                  name: name
+                  value: 'Алиса'
+              - column:
+                  name: year_of_birth
+                  valueNumeric: 1998
+              - column:
+                  name: username
+                  value: 'admin'
+              - column:
+                  name: password
+                  value: '$2a$10$.SdWeaCsHz2skHG16z4H.utJdSy6RcF.6pPZM2UtPGoNIPNBHRfq2'
+              - column:
+                  name: role
+                  value: 'ROLE_ADMIN'
+
+  - changeSet:
+      id: 4
+      author: Danil
+      changes:
+        - insert:
+            tableName: people
+            columns:
+              - column:
+                  name: name
+                  value: 'Боб'
+              - column:
+                  name: year_of_birth
+                  valueNumeric: 1992
+              - column:
+                  name: username
+                  value: 'user2'
+              - column:
+                  name: password
+                  value: '$2a$10$4gMs.KhbUJ.NYkm3joMtsetj6dWh0VVQmqP9yv1ATtekSoFTnW6vm'
+              - column:
+                  name: role
+                  value: 'ROLE_USER'
+
+  - changeSet:
+      id: 5
+      author: Danil
+      changes:
+        - insert:
+            tableName: people
+            columns:
+              - column:
+                  name: name
+                  value: 'Генри'
+              - column:
+                  name: year_of_birth
+                  valueNumeric: 1995
+              - column:
+                  name: username
+                  value: 'user3'
+              - column:
+                  name: password
+                  value: '$2a$10$4gMs.KhbUJ.NYkm3joMtsetj6dWh0VVQmqP9yv1ATtekSoFTnW6vm'
+              - column:
+                  name: role
+                  value: 'ROLE_USER'
+
+  - changeSet:
+      id: 6
+      author: Danil
+      changes:
+        - insert:
+            tableName: people
+            columns:
+              - column:
+                  name: name
+                  value: 'Люси'
+              - column:
+                  name: year_of_birth
+                  valueNumeric: 1989
+              - column:
+                  name: username
+                  value: 'user4'
+              - column:
+                  name: password
+                  value: '$2a$10$4gMs.KhbUJ.NYkm3joMtsetj6dWh0VVQmqP9yv1ATtekSoFTnW6vm'
+              - column:
+                  name: role
+                  value: 'ROLE_USER'

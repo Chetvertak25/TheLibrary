@@ -1,0 +1,154 @@
+databaseChangeLog:
+  - changeSet:
+      id: 12
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Великий Гэтсби'
+              - column:
+                  name: author
+                  value: 'Ф. Скотт Фицджеральд'
+              - column:
+                  name: year
+                  valueNumeric: 1925
+              - column:
+                  name: take_time
+                  value: '2024-01-17 12:54:32.112124'
+              - column:
+                  name: owner_id
+                  valueNumeric: 3
+
+  - changeSet:
+      id: 13
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Убить пересмешника'
+              - column:
+                  name: author
+                  value: 'Харпер Ли'
+              - column:
+                  name: year
+                  valueNumeric: 1960
+              - column:
+                  name: take_time
+                  valueComputed: 'CURRENT_TIMESTAMP'
+              - column:
+                  name: owner_id
+                  valueNumeric: 3
+
+  - changeSet:
+      id: 14
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: '1984'
+              - column:
+                  name: author
+                  value: 'Джордж Оруэлл'
+              - column:
+                  name: year
+                  valueNumeric: 1949
+              - column:
+                  name: take_time
+                  valueComputed: 'CURRENT_TIMESTAMP'
+              - column:
+                  name: owner_id
+                  valueNumeric: 3
+
+  - changeSet:
+      id: 15
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Гордость и предубеждение'
+              - column:
+                  name: author
+                  value: 'Джейн Остин'
+              - column:
+                  name: year
+                  valueNumeric: 1813
+
+  - changeSet:
+      id: 16
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Над пропастью во ржи'
+              - column:
+                  name: author
+                  value: 'Дж. Д. Сэлинджер'
+              - column:
+                  name: year
+                  valueNumeric: 1951
+
+  - changeSet:
+      id: 17
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Гарри Поттер и философский камень'
+              - column:
+                  name: author
+                  value: 'Дж. К. Роулинг'
+              - column:
+                  name: year
+                  valueNumeric: 1997
+
+  - changeSet:
+      id: 18
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Властелин колец'
+              - column:
+                  name: author
+                  value: 'Дж. Р. Р. Толкин'
+              - column:
+                  name: year
+                  valueNumeric: 1954
+
+  - changeSet:
+      id: 19
+      author: Danil
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: 'Моби дик'
+              - column:
+                  name: author
+                  value: 'Герман Мелвилл'
+              - column:
+                  name: year
+                  valueNumeric: 1851
