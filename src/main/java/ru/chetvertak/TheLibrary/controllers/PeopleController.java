@@ -1,6 +1,5 @@
 package ru.chetvertak.TheLibrary.controllers;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.chetvertak.TheLibrary.dto.PersonDTO;
 import ru.chetvertak.TheLibrary.mapper.BookMapper;
 import ru.chetvertak.TheLibrary.mapper.PersonMapper;
-import ru.chetvertak.TheLibrary.models.Person;
+import ru.chetvertak.TheLibrary.config.models.Person;
 import ru.chetvertak.TheLibrary.services.BooksService;
 import ru.chetvertak.TheLibrary.services.PeopleService;
 

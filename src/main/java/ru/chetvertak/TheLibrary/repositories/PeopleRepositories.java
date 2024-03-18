@@ -2,8 +2,7 @@ package ru.chetvertak.TheLibrary.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.chetvertak.TheLibrary.models.Book;
-import ru.chetvertak.TheLibrary.models.Person;
+import ru.chetvertak.TheLibrary.config.models.Person;
 
 import java.util.List;
 import java.util.Optional;

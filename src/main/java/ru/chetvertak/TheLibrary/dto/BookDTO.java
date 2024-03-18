@@ -1,9 +1,6 @@
 package ru.chetvertak.TheLibrary.dto;
 
-import ru.chetvertak.TheLibrary.models.Person;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import ru.chetvertak.TheLibrary.config.models.Person;
 
 public class BookDTO {
 

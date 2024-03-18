@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.chetvertak.TheLibrary.models.Person;
+import ru.chetvertak.TheLibrary.config.models.Person;
 import ru.chetvertak.TheLibrary.repositories.PeopleRepositories;
-import ru.chetvertak.TheLibrary.models.Role;
+import ru.chetvertak.TheLibrary.config.models.Role;
 
 @Service
 public class RegistrationService {

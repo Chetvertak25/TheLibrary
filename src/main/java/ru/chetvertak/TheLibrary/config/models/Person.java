@@ -1,4 +1,4 @@
-package ru.chetvertak.TheLibrary.models;
+package ru.chetvertak.TheLibrary.config.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
