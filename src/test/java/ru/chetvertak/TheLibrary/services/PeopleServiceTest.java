@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import ru.chetvertak.TheLibrary.config.models.Book;
-import ru.chetvertak.TheLibrary.config.models.Person;
-import ru.chetvertak.TheLibrary.config.models.Role;
+import ru.chetvertak.TheLibrary.models.Book;
+import ru.chetvertak.TheLibrary.models.Person;
+import ru.chetvertak.TheLibrary.models.Role;
 import ru.chetvertak.TheLibrary.repositories.BooksRepositories;
 import ru.chetvertak.TheLibrary.repositories.PeopleRepositories;
 

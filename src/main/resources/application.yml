@@ -2,10 +2,10 @@ spring:
   liquibase:
     enabled: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/security_app_bd
-    username: postgres
-    password: 2525
+    url:
+    username:
+    password:
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform:
     hibernate:
       ddl-auto: none

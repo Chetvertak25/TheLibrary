@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.chetvertak.TheLibrary.dto.BookDTO;
-import ru.chetvertak.TheLibrary.config.models.Book;
+import ru.chetvertak.TheLibrary.models.Book;
 
 @Component
 public class BookMapper {

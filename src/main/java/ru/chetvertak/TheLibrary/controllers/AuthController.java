@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.chetvertak.TheLibrary.config.models.Person;
+import ru.chetvertak.TheLibrary.models.Person;
 import ru.chetvertak.TheLibrary.services.RegistrationService;
 import ru.chetvertak.TheLibrary.util.PersonValidator;
 

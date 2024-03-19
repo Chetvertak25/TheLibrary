@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.Errors;
-import ru.chetvertak.TheLibrary.config.models.Person;
+import ru.chetvertak.TheLibrary.models.Person;
 import ru.chetvertak.TheLibrary.services.RegistrationService;
 import ru.chetvertak.TheLibrary.util.PersonValidator;
 

@@ -4,9 +4,9 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.chetvertak.TheLibrary.config.models.Book;
-import ru.chetvertak.TheLibrary.config.models.BookComparator;
-import ru.chetvertak.TheLibrary.config.models.Person;
+import ru.chetvertak.TheLibrary.models.Book;
+import ru.chetvertak.TheLibrary.models.BookComparator;
+import ru.chetvertak.TheLibrary.models.Person;
 import ru.chetvertak.TheLibrary.repositories.BooksRepositories;
 import ru.chetvertak.TheLibrary.repositories.PeopleRepositories;
 

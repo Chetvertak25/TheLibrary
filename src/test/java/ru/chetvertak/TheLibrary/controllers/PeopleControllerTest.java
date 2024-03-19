@@ -19,8 +19,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ru.chetvertak.TheLibrary.dto.PersonDTO;
 import ru.chetvertak.TheLibrary.mapper.BookMapper;
 import ru.chetvertak.TheLibrary.mapper.PersonMapper;
-import ru.chetvertak.TheLibrary.config.models.Person;
-import ru.chetvertak.TheLibrary.config.models.Role;
+import ru.chetvertak.TheLibrary.models.Person;
+import ru.chetvertak.TheLibrary.models.Role;
 import ru.chetvertak.TheLibrary.services.BooksService;
 import ru.chetvertak.TheLibrary.services.PeopleService;
 

@@ -6,12 +6,11 @@ MVC Веб-приложение библиотеки
 - [Spring Boot](https://spring.io/projects/spring-boot/)
 - [Spring Data JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 - [Spring Security](https://spring.io/guides/gs/securing-web/)
-- [Spring Thymeleaf](https://spring.io/guides/gs/serving-web-content/)
 - [Spring Web](https://spring.io/guides/gs/serving-web-content/)
-- [Thymeleaf Extras Spring Security 5](https://github.com/thymeleaf/thymeleaf-extras-springsecurity)
-- [PostgreSQL](https://www.postgresql.org/)
 - [Spring Boot Starter Test](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-testing)
 - [Spring Security Test](https://docs.spring.io/spring-security/site/docs/current/reference/html5/)
+- [Thymeleaf](https://www.thymeleaf.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 - [Hibernate Validator](https://hibernate.org/validator/)
 - [Liquibase](https://www.liquibase.org/)
 
@@ -47,8 +46,8 @@ MVC Веб-приложение библиотеки
 - Возможность вернуть выбранные книги или все книги сразу.
 
 ## Возможности ADMIN
-Все возможности пользователя плюс:
+Все возможности USER плюс:
 - Просмотр всех пользователей с их ролями, именем, возрастом и другими данными.
 - Добавление новых пользователей и книг.
 - Удаление пользователей и книг.
-- Редактирование информации о пользователях и книгах, назначение ролей и владельцев книг.
+- Редактирование информации о пользователях и книгах, назначение ролей и владельцев для книг.

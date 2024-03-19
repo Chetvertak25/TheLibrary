@@ -1,7 +1,7 @@
 package ru.chetvertak.TheLibrary.dto;
 
-import ru.chetvertak.TheLibrary.config.models.Book;
-import ru.chetvertak.TheLibrary.config.models.Role;
+import ru.chetvertak.TheLibrary.models.Book;
+import ru.chetvertak.TheLibrary.models.Role;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
